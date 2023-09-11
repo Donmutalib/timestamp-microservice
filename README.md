@@ -21,5 +21,14 @@ Example Input
 Example Output
 {"unix":1585751851261, "utc": "Wed, 01 Apr 2020 14:37:31 GMT"}
 
+# Setup
+Clone the repo by running git clone git@github.com:backendkolawole/timestamp-microservice.git in terminal
+
+Create a .env file and set up the PORT variable
+
+run npm install
+
+run npm start
+
 
 

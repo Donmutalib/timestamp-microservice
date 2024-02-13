@@ -1,55 +1,87 @@
 # node-timestamps
-
-## Motivation
-
-## Goal
-The goal with `node-timestamps` is to 
+node-timestamps is a Timestamp Microservice built with Nodejs and Express
 
 ## ⚙️ Installation
 
-- Clone the repo
-- 
-  `git clone git@github.com:backendkolawole/timestamp-microservice.git` 
+- Open CMD
+  
+- Change directory to desktop
 
-- Create a .env file and set up the PORT variable
+  `cd desktop`
+   
+- Clone this repository
 
+  `git clone git@github.com:backendkolawole/node-timestamps.git`
+
+- Change the current directory
+
+  `cd node-timestamps`
+  
 - Install packages
-
+  
   `npm install`
 
-- Start application
+- Create a .env file in the root directory
+  - Set up the `PORT` variable
+
+> [!IMPORTANT]
+> To avoid port collisions, in the source code, the port value is `3000`
+
+- Run the server
 
   `npm start`
 
 
-## Other usage examples
+## Endpoints
 
-## Documentation
 A date string is valid if it can be parsed by new Date(date_string).
 
-A request to `/api/:date?` with a valid date should return a JSON object with a unix key that is a Unix timestamp of the input date in milliseconds (as type Number)
+A request to `[base_url]/api/timestamp/:date?` should return a JSON object with a unix key that is a Unix timestamp of the input date in milliseconds (as type Number)
 
-If the input date string is invalid, the API returns an object having the structure `{ error: "Invalid Date" }`
-
-An empty date parameter should return the current time in a JSON object with a unix key
+An empty date parameter should return the current time in a JSON object with a Unix key
 
 ## Example
 
 Example Input
 
-**/api/timestamp/2015-12-25**
+**GET [project_url]/api/timestamp/2015-12-25**
+
+![Postman screenshot of GET request to [base_url]/api/timestamp.](https://github.com/backendkolawole/node-timestamps/assets/102606432/c86a93c5-71c5-4fff-a0c6-e6736b0e1a3d)
+
 
 Example Output
 
-`{"unix":1585699200000, "utc": "Wed, 01 Apr 2020 00:00:00 GMT"}`
+```
+200 (OK)
+{
+  "unix":1585699200000,
+  "utc": "Wed, 01 Apr 2020 00:00:00 GMT"
+}
+```
 
 Example Input
 
-**/api/timestamp/**
+**GET [base_url]/api/timestamp/**
+
+![Postman screenshot of GET request to [base_url]/api/timestamp.](https://github.com/backendkolawole/node-timestamps/assets/102606432/43de5b87-8223-4c07-bf34-a261aa740cb4)
 
 Example Output
 
-`{"unix":1585751851261, "utc": "Wed, 01 Apr 2020 14:37:31 GMT"}`
+```
+200 (OK)
+{
+    "unix": 1707822401354,
+    "utc": "Tue, 13 Feb 2024 11:06:41 GMT"
+}
 
-## Contact
+```
 
+If the input date string is invalid, the API returns an object having the structure 
+
+```
+400 (Bad Request)
+
+{
+  error: "Invalid Date"
+}
+```

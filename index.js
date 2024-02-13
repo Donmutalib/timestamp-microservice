@@ -6,7 +6,7 @@ const cors = require('cors');
 app.use(cors({ optionsSuccessStatus: 200 }));  // some legacy browsers choke on 204
 
 
-app.get('/api/:date?', (req, res) => {
+app.get('/api/timestamp/:date?', (req, res) => {
 
   let { date } = req.params
   if (!date) {
@@ -20,7 +20,7 @@ app.get('/api/:date?', (req, res) => {
   date = new Date(date)
 
   if (date == 'Invalid Date') {
-    return res.send({ error: "Invalid Date" })
+    return res.status(400).send({ error: "Invalid Date" })
   }
   res.json({ unix: Number(date), utc: date.toUTCString() })
 })
